@@ -25,12 +25,7 @@ pipeline {
             }
         }
 
-        stage('Manual Approval') {
-            steps {
-                input message: 'Approve to apply Terraform changes?', ok: 'Apply'
-            }
-        }
-
+        
         stage('Terraform Apply') {
             steps {
                 sh 'terraform apply -auto-approve plan.tfplan'
