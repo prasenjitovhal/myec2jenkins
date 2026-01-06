@@ -2,28 +2,14 @@ pipeline {
     agent any
 
     environment {
-        // Latest stable Terraform as of January 2026
-        TERRAFORM_VERSION = '1.14.3'
-        AWS_REGION        = 'us-east-1'  // Change if needed
+        AWS_REGION = 'us-east-1'
     }
 
     stages {
         stage('Checkout from GitHub') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/prasenjitovhal/myec2jenkins.git'  // Replace with your repo
-            }
-        }
-
-        stage('Install Terraform') {
-            steps {
-                sh '''
-                sudo dnf install -y unzip
-                wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-                unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-                sudo mv terraform /usr/local/bin/
-                terraform --version
-                '''
+                    url: 'https://github.com/prasenjitovhal/myec2jenkins.git'
             }
         }
 
