@@ -10,17 +10,18 @@ data "aws_ami" "amazon_linux" {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-}
-resource "aws_instance" "jenkins_demo" {
+}resource "aws_instance" "example" {
   ami           = data.aws_ami.amazon_linux.id
-  instance_type = "t3.micro"  # Free tier eligible
+  instance_type = "t2.micro"
 
   tags = {
-    Name = "Terraform-Jenkins-GitHub-EC2"
+    Name = "Jenkins-Terraform-EC2"
   }
 }
+
 
 output "instance_public_ip" {
   value = aws_instance.jenkins_demo.public_ip
 
 }
+
