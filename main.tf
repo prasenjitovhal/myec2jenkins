@@ -1,3 +1,4 @@
+# Fetch latest Amazon Linux 2 AMI (Free Tier safe)
 data "aws_ami" "amazon_linux" {
   most_recent = true
   owners      = ["amazon"]
@@ -13,12 +14,12 @@ data "aws_ami" "amazon_linux" {
   }
 }
 
+# Launch EC2 instance
 resource "aws_instance" "example" {
   ami           = data.aws_ami.amazon_linux.id
-  instance_type = "t3.micro"
+  instance_type = "t3.micro"   # Free Tier eligible
 
   tags = {
     Name = "Jenkins-Terraform-EC2"
   }
 }
-
