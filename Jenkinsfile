@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout from GitHub') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/YOUR_USERNAME/YOUR_REPO.git'  // Replace with your repo
+                    url: 'https://github.com/prasenjitovhal/myec2jenkins.git'  // Replace with your repo
             }
         }
 
