@@ -6,11 +6,14 @@ data "aws_ami" "amazon_linux" {
     name   = "name"
     values = ["amzn2-ami-hvm-*-x86_64-gp2"]
   }
+
   filter {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-}resource "aws_instance" "example" {
+}
+
+resource "aws_instance" "example" {
   ami           = data.aws_ami.amazon_linux.id
   instance_type = "t2.micro"
 
@@ -18,10 +21,3 @@ data "aws_ami" "amazon_linux" {
     Name = "Jenkins-Terraform-EC2"
   }
 }
-
-
-output "instance_public_ip" {
-  value = aws_instance.jenkins_demo.public_ip
-
-}
-
