@@ -20,6 +20,7 @@ resource "aws_instance" "example" {
   instance_type = "t3.micro"   # Free Tier eligible
 
   tags = {
-    Name = "Jenkins-Terraform-EC2"
+    Name = ""
   }
 }
+
